@@ -5,25 +5,36 @@ const rl = readline.createInterface({
     output: process.stdout
 });
 
-rl.question("Enter number of terms: ", (input) => {
+rl.question("Enter a number: ", (input) => {
 
-    const n = Number(input);
+    const originalNum = Number(input);
 
-    let a = 0;
-    let b = 1;
-
-    let result = [];
-
-    for (let i = 0; i < n; i++) {
-        result.push(a);
-
-        const next = a + b;
-
-        a = b;
-        b = next;
+    if (isNaN(originalNum) || input.trim() === "") {
+        console.log("Please enter a valid number.");
+        rl.close();
+        return;
     }
 
-    console.log("Fibonacci Series:", result.join(" "));
+    if (originalNum < 0) {
+        console.log(`${originalNum} is NOT a Palindrome Number.`);
+        rl.close();
+        return;
+    }
+
+    let temp = originalNum;
+    let reversedNum = 0;
+
+    while (temp > 0) {
+        const digit = temp % 10;
+        reversedNum = (reversedNum * 10) + digit;
+        temp = Math.floor(temp / 10);
+    }
+
+    if (originalNum === reversedNum) {
+        console.log(`${originalNum} is a Palindrome Number`);
+    } else {
+        console.log(`${originalNum} is NOT a Palindrome Number`);
+    }
 
     rl.close();
 });
