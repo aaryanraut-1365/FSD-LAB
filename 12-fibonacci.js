@@ -5,28 +5,25 @@ const rl = readline.createInterface({
     output: process.stdout
 });
 
-rl.question("Enter a number: ", (input) => {
+rl.question("Enter number of terms: ", (input) => {
 
-    const number = Number(input);
+    const n = Number(input);
 
-    let isPrime = true;
+    let a = 0;
+    let b = 1;
 
-    if (number < 2) {
-        isPrime = false;
-    } else {
-        for (let i = 2; i * i <= number; i++) {
-            if (number % i === 0) {
-                isPrime = false;
-                break;
-            }
-        }
+    let result = [];
+
+    for (let i = 0; i < n; i++) {
+        result.push(a);
+
+        const next = a + b;
+
+        a = b;
+        b = next;
     }
 
-    if (isPrime) {
-        console.log("Prime Number");
-    } else {
-        console.log("Not a Prime Number");
-    }
+    console.log("Fibonacci Series:", result.join(" "));
 
     rl.close();
 });
