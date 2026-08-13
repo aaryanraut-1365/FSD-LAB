@@ -5,20 +5,26 @@ const rl = readline.createInterface({
     output: process.stdout
 });
 
-rl.question("Enter a number: ", (input) => {
+function reverseNumber(num) {
+    let reversed = 0;
+    let n = Math.abs(num);
 
-    let number = Math.abs(Number(input));
-    let sum = 0;
-
-    while (number > 0) {
-        const digit = number % 10;
-
-        sum += digit;
-
-        number = Math.floor(number / 10);
+    while (n > 0) {
+        reversed = reversed * 10 + (n % 10);
+        n = Math.floor(n / 10);
     }
 
-    console.log("Sum of digits:", sum);
+    return num < 0 ? -reversed : reversed;
+}
+
+rl.question("Enter a number: ", (input) => {
+    const num = Number(input);
+
+    if (isNaN(num) || input.trim() === "") {
+        console.log("Please enter a valid number.");
+    } else {
+        console.log("Reversed Number:", reverseNumber(num));
+    }
 
     rl.close();
 });
