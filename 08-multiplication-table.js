@@ -5,16 +5,12 @@ const rl = readline.createInterface({
     output: process.stdout
 });
 
-rl.question("Enter a year: ", (input) => {
+rl.question("Enter a number: ", (input) => {
 
-    const year = Number(input);
+    const number = Number(input);
 
-    if ((year % 400 === 0) || 
-        (year % 4 === 0 && year % 100 !== 0)) {
-        
-        console.log("Leap Year");
-    } else {
-        console.log("Not a Leap Year");
+    for (let i = 1; i <= 10; i++) {
+        console.log(`${number} x ${i} = ${number * i}`);
     }
 
     rl.close();
