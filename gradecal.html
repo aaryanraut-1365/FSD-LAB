@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grade Evaluator</title>
+
+    <script>
+        function checkGrade() {
+            const inputVal = document.getElementById("marksInput").value;
+
+            if (inputVal === "") {
+                document.getElementById("result").innerText = "Please enter marks.";
+                return;
+            }
+
+            const marks = Number(inputVal);
+
+            if (isNaN(marks) || marks < 0 || marks > 100) {
+                document.getElementById("result").innerText = "Please enter valid marks between 0 and 100.";
+                return;
+            }
+
+            if (marks >= 90) {
+                document.getElementById("result").innerText = "Grade: A";
+            } else if (marks >= 75) {
+                document.getElementById("result").innerText = "Grade: B";
+            } else if (marks >= 60) {
+                document.getElementById("result").innerText = "Grade: C";
+            } else if (marks >= 40) {
+                document.getElementById("result").innerText = "Grade: D";
+            } else {
+                document.getElementById("result").innerText = "Fail";
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <label for="marksInput">Enter marks:</label><br/>
+    <input type="number" id="marksInput" min="0" max="100"><br/><br/>
+
+    <button type="button" onclick="checkGrade()">Evaluate Grade</button>
+
+    <h3>Result:</h3>
+    <p id="result"></p>
+</body>
+</html>

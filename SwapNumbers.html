@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swap Numbers</title>
+    <script>
+        function swapNumbers() {
+            // Read input values and convert to numbers
+            let a = Number(document.getElementById("firstInput").value);
+            let b = Number(document.getElementById("secondInput").value);
+
+            document.getElementById("before").innerText = `Before swapping: a = ${a}, b = ${b}`;
+
+            [a, b] = [b, a];
+
+            document.getElementById("after").innerText = `After swapping: a = ${a}, b = ${b}`;
+
+            document.getElementById("firstInput").value = a;
+            document.getElementById("secondInput").value = b;
+        }
+    </script>
+</head>
+<body>
+    <label for="firstInput">Enter first number (a):</label><br/>
+    <input type="number" id="firstInput"><br/><br/>
+
+    <label for="secondInput">Enter second number (b):</label><br/>
+    <input type="number" id="secondInput"><br/><br/>
+
+    <button type="button" onclick="swapNumbers()">Swap Numbers</button>
+
+    <h3>Results:</h3>
+    <p id="before"></p>
+    <p id="after"></p>
+</body>
+</html>

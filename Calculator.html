@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+            function addNum()
+            {
+                var n1 = parseFloat(document.getElementById("number1").value);
+                var n2 = parseFloat(document.getElementById("number2").value);
+                var sum = n1+n2;
+                var operator = document.getElementById("operator").value;
+                var result = 0;
+
+                if (isNaN(n1) || isNaN(n2)) {
+                document.getElementById("result").innerText = "Please enter valid numbers.";
+                return;
+            }
+
+            switch (operator) {
+                case "+":
+                    result = n1 + n2;
+                    break;
+                case "-":
+                    result = n1 - n2;
+                    break;
+                case "*":
+                    result = n1 * n2;
+                    break;
+                case "/":
+                    if (n2 === 0) {
+                        document.getElementById("result").innerText = "Cannot divide by zero!";
+                        return;
+                    }
+                    result = n1 / n2;
+                    break;
+                default:
+                    document.getElementById("result").innerText = "Invalid operator";
+                    return;
+            }
+
+            document.getElementById("result").innerText = "Result = " + result;
+            }
+    </script>
+</head>
+<body>
+        Enter first number : 
+        <input type="number" id="number1">
+
+        <br/><br/><br/>
+
+        Select operator:
+        <select id="operator">
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+        </select>
+
+        <br><br><br>
+
+        Enter second number : 
+        <input type="number" id="number2">
+
+        <br/><br/><br/>
+        <button type="button" onclick="addNum()"> Calculate </button>
+        
+        <p id="result"></p>
+
+</body>
+</html>

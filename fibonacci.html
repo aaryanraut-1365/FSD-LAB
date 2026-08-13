@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fibonacci Series Generator</title>
+
+    <script>
+        function generateFibonacci() {
+            const inputVal = document.getElementById("termsInput").value;
+
+            if (inputVal === "") {
+                document.getElementById("result").innerText = "Please enter the number of terms.";
+                return;
+            }
+
+            const n = Number(inputVal);
+
+            if (isNaN(n) || n <= 0) {
+                document.getElementById("result").innerText = "Please enter a positive whole number.";
+                return;
+            }
+
+            let a = 0;
+            let b = 1;
+            let result = [];
+
+            for (let i = 0; i < n; i++) {
+                result.push(a);
+
+                const next = a + b;
+                a = b;
+                b = next;
+            }
+
+            document.getElementById("result").innerText = "Fibonacci Series: " + result.join(", ");
+        }
+    </script>
+</head>
+<body>
+    <label for="termsInput">Enter number of terms:</label><br/>
+    <input type="number" id="termsInput" placeholder="e.g. 8" min="1"><br/><br/>
+
+    <button type="button" onclick="generateFibonacci()">Generate Series</button>
+
+    <h3>Result:</h3>
+    <p id="result"></p>
+</body>
+</html>

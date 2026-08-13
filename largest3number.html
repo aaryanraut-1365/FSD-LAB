@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Largest Number</title>
+
+    <script>
+        function findLargest() {
+            const inputA = document.getElementById("firstInput").value;
+            const inputB = document.getElementById("secondInput").value;
+            const inputC = document.getElementById("thirdInput").value;
+
+            if (inputA === "" || inputB === "" || inputC === "") {
+                document.getElementById("result").innerText = "Please enter all three numbers.";
+                return;
+            }
+
+            const a = Number(inputA);
+            const b = Number(inputB);
+            const c = Number(inputC);
+
+            if (isNaN(a) || isNaN(b) || isNaN(c)) {
+                document.getElementById("result").innerText = "Please enter valid numbers.";
+                return;
+            }
+
+            if (a >= b && a >= c) {
+                document.getElementById("result").innerText = "Largest: " + a;
+            } else if (b >= a && b >= c) {
+                document.getElementById("result").innerText = "Largest: " + b;
+            } else {
+                document.getElementById("result").innerText = "Largest: " + c;
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <label for="firstInput">Enter first number:</label><br/>
+    <input type="number" id="firstInput"><br/><br/>
+
+    <label for="secondInput">Enter second number:</label><br/>
+    <input type="number" id="secondInput"><br/><br/>
+
+    <label for="thirdInput">Enter third number:</label><br/>
+    <input type="number" id="thirdInput"><br/><br/>
+
+    <button type="button" onclick="findLargest()">Find Largest</button>
+
+    <h3>Result:</h3>
+    <p id="result"></p>
+</body>
+</html>

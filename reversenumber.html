@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reverse Number UI</title>
+
+    <script>
+
+        function reverseNumber(num) {
+            let reversed = 0;
+            let n = Math.abs(num);
+
+            while (n > 0) {
+                reversed = reversed * 10 + (n % 10);
+                n = Math.floor(n / 10);
+            }
+
+            return num < 0 ? -reversed : reversed;
+        }
+
+        function handleInput() {
+            const inputVal = document.getElementById("userInput").value;
+            const resultElement = document.getElementById("result");
+
+            if (inputVal === "") {
+                resultElement.innerText = "Please enter a number.";
+                return;
+            }
+
+            const num = Number(inputVal);
+
+            if (isNaN(num)) {
+                resultElement.innerText = "Please enter a valid number.";
+                return;
+            }
+
+            const output = reverseNumber(num);
+            resultElement.innerText = `Reversed Output: ${output}`;
+        }
+    </script>
+</head>
+<body>
+
+    <label for="userInput">Enter a number:</label><br/>
+    <input type="number" id="userInput" placeholder="e.g. 12345"><br/><br/>
+
+    <button type="button" onclick="handleInput()">Reverse Number</button>
+
+    <h3>Result:</h3>
+    <p id="result"></p>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Interest Calculator</title>
+
+    <script>
+        function calculateSI() {
+            // Get values from inputs
+            const P = Number(document.getElementById("principal").value);
+            const R = Number(document.getElementById("rate").value);
+            const T = Number(document.getElementById("time").value);
+
+            if (isNaN(P) || isNaN(R) || isNaN(T)) {
+                document.getElementById("result").innerText = "Please enter valid numbers in all fields.";
+                return;
+            }
+
+            const SI = (P * R * T) / 100;
+            const totalAmount = P + SI;
+
+            document.getElementById("result").innerHTML = 
+                `<strong>Simple Interest:</strong> ${SI.toFixed(2)} <br>` +
+                `<strong>Total Amount Payable:</strong> ${totalAmount.toFixed(2)}`;
+        }
+    </script>
+</head>
+<body>
+
+    <label for="principal">Enter principal amount:</label><br/>
+    <input type="number" id="principal" placeholder="e.g. 10000"><br/><br/>
+
+    <label for="rate">Enter rate of interest (% per year):</label><br/>
+    <input type="number" id="rate" placeholder="e.g. 5"><br/><br/>
+
+    <label for="time">Enter time (in years):</label><br/>
+    <input type="number" id="time" placeholder="e.g. 2"><br/><br/>
+
+    <button type="button" onclick="calculateSI()">Calculate Interest</button>
+
+    <h3>Result:</h3>
+    <p id="result"></p>
+</body>
+</html>

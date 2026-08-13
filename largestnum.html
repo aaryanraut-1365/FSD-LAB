@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Largest Element in Array</title>
+
+    <script>
+        function findLargestInArray() {
+            const inputVal = document.getElementById("arrayInput").value;
+            const resultElement = document.getElementById("result");
+
+            if (inputVal.trim() === "") {
+                resultElement.innerText = "Please enter some numbers.";
+                return;
+            }
+
+            const numbers = inputVal.trim().split(/\s+/).map(Number);
+
+            if (numbers.some(isNaN)) {
+                resultElement.innerText = "Please enter valid numbers separated by spaces.";
+                return;
+            }
+
+            let largest = numbers[0];
+
+            for (let i = 1; i < numbers.length; i++) {
+                if (numbers[i] > largest) {
+                    largest = numbers[i];
+                }
+            }
+
+            // Display results
+            resultElement.innerHTML = 
+                `<strong>Array:</strong> [ ${numbers.join(", ")} ] <br/>` +
+                `<strong>Largest Element:</strong> ${largest}`;
+        }
+    </script>
+</head>
+<body>
+    <label for="arrayInput">Enter array elements separated by spaces:</label><br/>
+    <input type="text" id="arrayInput" placeholder="e.g. 10 45 2 99 23" style="width: 250px;"><br/><br/>
+
+    <button type="button" onclick="findLargestInArray()">Find Largest</button>
+
+    <h3>Result:</h3>
+    <p id="result"></p>
+</body>
+</html>
