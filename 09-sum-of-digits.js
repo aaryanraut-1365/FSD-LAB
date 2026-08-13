@@ -7,11 +7,18 @@ const rl = readline.createInterface({
 
 rl.question("Enter a number: ", (input) => {
 
-    const number = Number(input);
+    let number = Math.abs(Number(input));
+    let sum = 0;
 
-    for (let i = 1; i <= 10; i++) {
-        console.log(`${number} x ${i} = ${number * i}`);
+    while (number > 0) {
+        const digit = number % 10;
+
+        sum += digit;
+
+        number = Math.floor(number / 10);
     }
+
+    console.log("Sum of digits:", sum);
 
     rl.close();
 });
