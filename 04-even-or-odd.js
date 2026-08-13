@@ -5,19 +5,16 @@ const rl = readline.createInterface({
     output: process.stdout
 });
 
-rl.question("Enter principal amount: ", (pInput) => {
-    rl.question("Enter rate of interest: ", (rInput) => {
-        rl.question("Enter time in years: ", (tInput) => {
+rl.question("Enter a number: ", (input) => {
+    const num = Number(input);
 
-            const P = Number(pInput);
-            const R = Number(rInput);
-            const T = Number(tInput);
+    if (isNaN(num)) {
+        console.log("Please enter a valid number.");
+    } else if (num % 2 === 0) {
+        console.log(`${num} is Even`);
+    } else {
+        console.log(`${num} is Odd`);
+    }
 
-            const SI = (P * R * T) / 100;
-
-            console.log("Simple Interest:", SI);
-
-            rl.close();
-        });
-    });
+    rl.close();
 });
