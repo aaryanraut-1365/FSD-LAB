@@ -28,3 +28,6 @@ This experiment demonstrates fundamental JavaScript concepts including:
 13. Palindrome Number/String
 14. Find Largest Element in an Array
 15. Count Vowels in a String
+16. Fisrt.py
+17. Second.py
+18. Basic.hmtl
